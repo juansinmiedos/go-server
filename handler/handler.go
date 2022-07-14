@@ -7,7 +7,11 @@ import (
 )
 
 func New() http.Handler {
-	r := mux.NewRouter
+	r := mux.NewRouter()
+
+	r.HandleFunc("/healthy", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+	})
 
 	return r
 }
